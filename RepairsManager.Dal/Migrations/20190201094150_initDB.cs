@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepairsManager.Dal.Migrations
@@ -11,7 +12,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Commission",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Number = table.Column<string>(maxLength: 8, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     ChairmanId = table.Column<int>(nullable: false)
@@ -25,7 +27,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Employee_department",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 64, nullable: false)
                 },
                 constraints: table =>
@@ -37,7 +40,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Employee_position",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 64, nullable: false)
                 },
                 constraints: table =>
@@ -49,7 +53,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Material_party",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Number = table.Column<string>(maxLength: 16, nullable: true),
                     Receipt = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
@@ -62,7 +67,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Material_units",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 8, nullable: false)
                 },
                 constraints: table =>
@@ -74,7 +80,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Order_fault",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 512, nullable: false)
                 },
                 constraints: table =>
@@ -86,7 +93,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Order_status",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 16, nullable: false)
                 },
                 constraints: table =>
@@ -98,7 +106,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Vehicle_mark",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 64, nullable: false)
                 },
                 constraints: table =>
@@ -110,7 +119,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Employee",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 32, nullable: false),
                     LastName = table.Column<string>(maxLength: 32, nullable: false),
                     MiddleName = table.Column<string>(maxLength: 32, nullable: false),
@@ -138,7 +148,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Material",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PartyId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     UnitId = table.Column<int>(nullable: false),
@@ -165,7 +176,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Vehicle_model",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     VehicleMarkId = table.Column<int>(nullable: false)
                 },
@@ -184,7 +196,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Commission_responsible",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CommissionId = table.Column<int>(nullable: false),
                     EmployeeId = table.Column<int>(nullable: false)
                 },
@@ -209,10 +222,11 @@ namespace RepairsManager.Dal.Migrations
                 name: "Defecation_part",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MaterialId = table.Column<int>(nullable: false),
                     Amount = table.Column<int>(nullable: false),
-                    Scope = table.Column<string>(maxLength: 16, nullable: false, defaultValueSql: "('????????')")
+                    Scope = table.Column<string>(maxLength: 16, nullable: false, defaultValueSql: "('Заменено')")
                 },
                 constraints: table =>
                 {
@@ -229,8 +243,9 @@ namespace RepairsManager.Dal.Migrations
                 name: "Depreciation",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
-                    Organization = table.Column<string>(maxLength: 64, nullable: false, defaultValueSql: "('?? \"????????? ????????? ??????\"')"),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Organization = table.Column<string>(maxLength: 64, nullable: false, defaultValueSql: "('ИП \"Городская аварийная служба\"')"),
                     DepartmentId = table.Column<int>(nullable: false),
                     ApprovedId = table.Column<int>(nullable: false),
                     Number = table.Column<string>(maxLength: 8, nullable: false),
@@ -264,7 +279,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Vehicle",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     VehicleModelId = table.Column<int>(nullable: false),
                     Reg_number = table.Column<string>(maxLength: 16, nullable: false),
                     DriverId = table.Column<int>(nullable: false)
@@ -290,7 +306,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Defecation",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     VehicleId = table.Column<int>(nullable: false),
                     PartId = table.Column<int>(nullable: false),
                     CreateOn = table.Column<DateTime>(type: "datetime", nullable: false),
@@ -323,7 +340,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     VehicleId = table.Column<int>(nullable: false),
                     Speedometer = table.Column<int>(nullable: false),
                     CreateOn = table.Column<DateTime>(type: "datetime", nullable: false),
@@ -357,7 +375,8 @@ namespace RepairsManager.Dal.Migrations
                 name: "Defecation_responsible",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     defecationId = table.Column<int>(nullable: false),
                     employeeId = table.Column<int>(nullable: false)
                 },

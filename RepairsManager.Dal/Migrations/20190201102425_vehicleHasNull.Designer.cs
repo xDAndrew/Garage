@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepairsManager.Dal.Context;
 
 namespace RepairsManager.Dal.Migrations
 {
     [DbContext(typeof(RepairsManagerContext))]
-    partial class RepairsManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20190201102425_vehicleHasNull")]
+    partial class vehicleHasNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

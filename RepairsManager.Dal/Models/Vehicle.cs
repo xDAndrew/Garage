@@ -13,7 +13,7 @@ namespace RepairsManager.Dal.Models
         public int Id { get; set; }
         public int VehicleModelId { get; set; }
         public string RegNumber { get; set; }
-        public int DriverId { get; set; }
+        public int? DriverId { get; set; }
 
         public virtual Employee Driver { get; set; }
         public virtual VehicleModel VehicleModel { get; set; }

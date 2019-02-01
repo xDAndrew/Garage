@@ -10,7 +10,7 @@ using RepairsManager.Dal.Context;
 namespace RepairsManager.Dal.Migrations
 {
     [DbContext(typeof(RepairsManagerContext))]
-    [Migration("20190131172347_initDB")]
+    [Migration("20190201094150_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Commission", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ChairmanId");
 
@@ -41,7 +43,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.CommissionResponsible", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CommissionId");
 
@@ -58,7 +62,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Defecation", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ApprovedId");
 
@@ -82,7 +88,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.DefecationPart", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Amount");
 
@@ -91,7 +99,7 @@ namespace RepairsManager.Dal.Migrations
                     b.Property<string>("Scope")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("('????????')")
+                        .HasDefaultValueSql("('Заменено')")
                         .HasMaxLength(16);
 
                     b.HasKey("Id");
@@ -103,7 +111,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.DefecationResponsible", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DefecationId")
                         .HasColumnName("defecationId");
@@ -120,7 +130,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Depreciation", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ApprovedId");
 
@@ -137,7 +149,7 @@ namespace RepairsManager.Dal.Migrations
                     b.Property<string>("Organization")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("('?? \"????????? ????????? ??????\"')")
+                        .HasDefaultValueSql("('ИП \"Городская аварийная служба\"')")
                         .HasMaxLength(64);
 
                     b.HasKey("Id");
@@ -157,7 +169,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Employee", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DepartmentId");
 
@@ -186,7 +200,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.EmployeeDepartment", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -203,7 +219,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.EmployeePosition", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -220,7 +238,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Material", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -244,7 +264,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.MaterialParty", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Number")
                         .HasMaxLength(16);
@@ -264,7 +286,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.MaterialUnits", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -281,7 +305,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Order", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreateOn")
                         .HasColumnType("datetime");
@@ -307,7 +333,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.OrderFault", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -320,7 +348,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.OrderStatus", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -337,7 +367,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.Vehicle", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverId");
 
@@ -363,7 +395,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.VehicleMark", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -380,7 +414,9 @@ namespace RepairsManager.Dal.Migrations
 
             modelBuilder.Entity("RepairsManager.Dal.Models.VehicleModel", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()

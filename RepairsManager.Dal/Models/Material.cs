@@ -6,8 +6,7 @@ namespace RepairsManager.Dal.Models
     {
         public Material()
         {
-            DefecationPart = new HashSet<DefecationPart>();
-            Depreciation = new HashSet<Depreciation>();
+            RepairPart = new HashSet<RepairPart>();
         }
 
         public int Id { get; set; }
@@ -18,7 +17,6 @@ namespace RepairsManager.Dal.Models
 
         public virtual MaterialParty Party { get; set; }
         public virtual MaterialUnits Unit { get; set; }
-        public virtual ICollection<DefecationPart> DefecationPart { get; set; }
-        public virtual ICollection<Depreciation> Depreciation { get; set; }
+        public virtual ICollection<RepairPart> RepairPart { get; set; }
     }
 }

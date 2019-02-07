@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
+import { VehicleModule } from './Vehicle/vehicle.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ButtonModule } from 'primeng/button';
     BrowserAnimationsModule,
     AppRoutingModule,
     ToolbarModule,
-    ButtonModule
+    ButtonModule,
+    VehicleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

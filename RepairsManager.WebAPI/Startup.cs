@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RepairsManager.Dal.Context;
+using RepairsManager.WebAPI.Automapper;
 
 namespace RepairsManager.WebAPI
 {
@@ -23,6 +25,15 @@ namespace RepairsManager.WebAPI
         {
             Console.WriteLine(Configuration.GetConnectionString("RepairsMngDB"));
             services.AddDbContext<RepairsManagerContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("RepairsMngDB")));
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new VehicleProfile());
+            });
+
+            var mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSpaStaticFiles(configuration =>
             {

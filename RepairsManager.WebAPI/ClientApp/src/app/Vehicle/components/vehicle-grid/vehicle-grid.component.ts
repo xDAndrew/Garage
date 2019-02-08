@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { VehicleApiService } from '../../services/api/vehicle-api.service';
 import { Observable } from 'rxjs';
 import { vehicleModel } from '../../models/VehicleModel';
+import { VehicleService } from '../../services/Vehicle.Service';
 
 @Component({
   selector: 'app-vehicle-grid',
@@ -11,6 +11,7 @@ import { vehicleModel } from '../../models/VehicleModel';
 export class VehicleGridComponent implements OnInit {
 
   private vehilces: Observable<Array<vehicleModel>>;
+  private selectedVehicle: vehicleModel;
 
   cols: any[] = [
     { field: 'id', header: '#' },
@@ -19,10 +20,14 @@ export class VehicleGridComponent implements OnInit {
     { field: 'regNumber', header: 'Гос. №' }
   ];
 
-  constructor(private vehicleApi: VehicleApiService) { }
+  constructor(private vehicleService: VehicleService) { }
 
   ngOnInit() {
-    this.vehilces = this.vehicleApi.getVehicles();
+    this.vehilces = this.vehicleService.collection;
   }
 
+  removeVehicle(id: number) {
+    console.log(id);
+    this.vehicleService.RemoveVehicle(id);
+  }
 }

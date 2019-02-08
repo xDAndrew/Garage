@@ -1,16 +1,20 @@
-<p-table [value]="vehilces | async">
-  <ng-template pTemplate="header">
-      <tr>
-          <th *ngFor="let col of cols">
-              {{col.header}}
-          </th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-vehicle>
-      <tr>
-          <td *ngFor="let col of cols">
-            {{vehicle[col.field]}}
-          </td>
-      </tr>
-  </ng-template>
+<p-table [value]="vehilces | async" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols">
+                {{col.header}}
+            </th>
+            <th width="5%"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-vehicle>
+        <tr>
+            <td *ngFor="let col of cols">
+                {{vehicle[col.field]}}
+            </td>
+            <td class="text-center">
+                <i title="Удалить машину" class="pi pi-times-circle" (click)="removeVehicle(vehicle?.id)"></i>
+            </td>
+        </tr>
+    </ng-template>
 </p-table>

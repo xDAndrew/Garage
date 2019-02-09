@@ -9,6 +9,6 @@ export class ModelApiService {
     constructor(private http: HttpClient) { }
 
     getModel(): Observable<Array<ModelVehicle>> {
-        return this.http.get<Array<ModelVehicle>>(window.location.protocol);
+        return this.http.get<Array<ModelVehicle>>(window.location.protocol + 'api/Model');
     }
 }

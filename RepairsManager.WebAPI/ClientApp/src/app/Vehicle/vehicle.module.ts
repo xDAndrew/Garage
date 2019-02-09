@@ -4,13 +4,15 @@ import { VehicleGridComponent } from './components/vehicle-grid/vehicle-grid.com
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { VehicleApiService } from './services/api/vehicle-api.service';
-import { VehicleService } from './services/Vehicle.Service';
+import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { MarkService } from './services/mark.service';
+import { MarkApiService } from './services/api/mark-api.service';
 
 @NgModule({
   declarations: [VehicleGridComponent, VehicleFormComponent, VehicleFormComponent],
@@ -25,6 +27,6 @@ import { CardModule } from 'primeng/card';
     CardModule
   ],
   exports: [VehicleGridComponent, VehicleFormComponent],
-  providers: [VehicleApiService, VehicleService]
+  providers: [VehicleApiService, VehicleService, MarkService, MarkApiService]
 })
 export class VehicleModule { }

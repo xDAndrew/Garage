@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using RepairsManager.Dal.Models;
 using RepairsManager.WebAPI.Models;
 

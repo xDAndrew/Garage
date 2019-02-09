@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { vehicleModel } from '../../models/VehicleModel';
-import { VehicleService } from '../../services/Vehicle.Service';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-grid',

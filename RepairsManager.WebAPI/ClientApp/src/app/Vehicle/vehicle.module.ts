@@ -13,6 +13,8 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { MarkService } from './services/mark.service';
 import { MarkApiService } from './services/api/mark-api.service';
+import { ModelApiService } from './services/api/model-api.service';
+import { ModelService } from './services/model.service';
 
 @NgModule({
   declarations: [VehicleGridComponent, VehicleFormComponent, VehicleFormComponent],
@@ -27,6 +29,7 @@ import { MarkApiService } from './services/api/mark-api.service';
     CardModule
   ],
   exports: [VehicleGridComponent, VehicleFormComponent],
-  providers: [VehicleApiService, VehicleService, MarkService, MarkApiService]
+  providers: [VehicleApiService, VehicleService, MarkService, MarkApiService, ModelApiService, ModelService]
 })
 export class VehicleModule { }
+

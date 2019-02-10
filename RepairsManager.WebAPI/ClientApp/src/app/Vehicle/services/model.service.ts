@@ -12,11 +12,15 @@ export class ModelService {
     constructor(private modelApi: ModelApiService) {
         this.modelApi.getModel().subscribe(x => {
             this.data = x;
-            this.instanse.next(this.data)
+            this.instanse.next(this.data);
         });
+
     }
 
     get collection(): Observable<Array<ModelVehicle>> {
         return this.instanse.asObservable();
+    }
+    public getModelById(Id: number): Array<ModelVehicle> {
+        return this.data.filter(x => x.vehicleMarkId == Id);
     }
 }

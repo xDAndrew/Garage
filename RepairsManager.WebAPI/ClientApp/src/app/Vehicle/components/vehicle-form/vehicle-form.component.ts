@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleMarkModel } from '../../models/vehicleMarkModel';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { MarkService } from '../../services/mark.service';
 import { ModelService } from '../../services/model.service';
 import { ModelVehicle } from '../../models/modelVehicle';
+import { Dropdown } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -11,19 +12,20 @@ import { ModelVehicle } from '../../models/modelVehicle';
   styleUrls: ['./vehicle-form.component.scss']
 })
 export class VehicleFormComponent implements OnInit {
-
+ 
   private marks: Observable<Array<VehicleMarkModel>>;
-  private model: Observable<Array<ModelVehicle>>;
+  private models: Array<ModelVehicle>;
   private selectedMark: VehicleMarkModel;
+
   text: string;
 
   constructor(private markService: MarkService, private modelService: ModelService) { }
 
   ngOnInit() {
     this.marks = this.markService.collection;
-    this.model = this.modelService.collection;
   }
-  getId() {
 
+  SetModels() {
+    this.models = this.modelService.getModelById(this.selectedMark.id);
   }
 }

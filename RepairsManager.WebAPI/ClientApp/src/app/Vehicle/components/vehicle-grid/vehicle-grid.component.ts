@@ -27,7 +27,6 @@ export class VehicleGridComponent implements OnInit {
   }
 
   removeVehicle(id: number) {
-    console.log(id);
     this.vehicleService.RemoveVehicle(id);
   }
  

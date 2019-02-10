@@ -1,3 +1,3 @@
 export class ModelVehicle {
-    constructor(public Id?: number, public Name?: string) { }
+    constructor(public id?: number, public vehicleMarkId?:number, public name?: string) { }
 }

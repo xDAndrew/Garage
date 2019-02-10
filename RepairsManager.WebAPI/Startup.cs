@@ -29,8 +29,9 @@ namespace RepairsManager.WebAPI
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new VehicleProfile());
+               mc.AddProfile(new ModelVehicle());
             });
-
+        
             var mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 

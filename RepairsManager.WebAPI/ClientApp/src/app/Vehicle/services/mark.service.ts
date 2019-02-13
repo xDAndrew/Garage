@@ -10,7 +10,6 @@ export class MarkService {
     markApi.getMarks().subscribe(x => {
       this.data = x;
       this.instance$.next(this.data);
-      console.log(this.data);
     });
   }
 

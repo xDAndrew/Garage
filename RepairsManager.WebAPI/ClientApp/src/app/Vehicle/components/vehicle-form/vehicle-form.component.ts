@@ -4,7 +4,6 @@ import { Observable, fromEvent } from 'rxjs';
 import { MarkService } from '../../services/mark.service';
 import { ModelService } from '../../services/model.service';
 import { ModelVehicle } from '../../models/modelVehicle';
-import { Dropdown } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -12,7 +11,6 @@ import { Dropdown } from 'primeng/dropdown';
   styleUrls: ['./vehicle-form.component.scss']
 })
 export class VehicleFormComponent implements OnInit {
- 
   private marks: Observable<Array<VehicleMarkModel>>;
   private models: Array<ModelVehicle>;
   private selectedMark: VehicleMarkModel;
@@ -25,7 +23,7 @@ export class VehicleFormComponent implements OnInit {
     this.marks = this.markService.collection;
   }
 
-  SetModels() {
+  setModels() {
     this.models = this.modelService.getModelById(this.selectedMark.id);
   }
 }

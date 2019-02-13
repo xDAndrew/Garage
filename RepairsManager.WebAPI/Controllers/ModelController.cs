@@ -28,12 +28,12 @@ namespace RepairsManager.WebAPI.Controllers
             return mapper.Map<IEnumerable<ModelVehicleEndpoint>>(context.VehicleModel);
         }
 
-        //// GET: api/Model/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET: api/Model/5
+        [HttpGet("{id}", Name = "GetModel")]
+        public string Get(int id)
+        {
+            return "value";
+        }
 
         // POST: api/Model
         [HttpPost]

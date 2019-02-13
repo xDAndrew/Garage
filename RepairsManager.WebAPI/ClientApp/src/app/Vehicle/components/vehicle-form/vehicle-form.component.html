@@ -3,7 +3,7 @@
     <div class="card-header">Добавить автотранспорт</div>
     <div class="p-2 ui-fluid">
       <label class="ui-g-12 p-0">Марка</label>
-      <p-dropdown [options]="marks | async" [(ngModel)]="selectedMark" optionLabel="name" (onChange)="SetModels()" required></p-dropdown>
+      <p-dropdown [options]="marks | async" [(ngModel)]="selectedMark" optionLabel="name" (onChange)="setModels()" required></p-dropdown>
       <label class="ui-g-12  p-0">Модель</label>
       <p-dropdown [options]="models" class="ui-g-12  p-0" optionLabel="name" required></p-dropdown>
       <label class="ui-g-12 p-0">Гос. №</label>

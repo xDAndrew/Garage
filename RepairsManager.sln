@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairsManager.WebAPI", "RepairsManager.WebAPI\RepairsManager.WebAPI.csproj", "{861D61FA-0D6F-41E1-ADEE-0903DA9A2CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairsManager.WebAPI", "RepairsManager.WebAPI\RepairsManager.WebAPI.csproj", "{861D61FA-0D6F-41E1-ADEE-0903DA9A2CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairsManager.Dal", "RepairsManager.Dal\RepairsManager.Dal.csproj", "{4144163A-386B-4ED4-AE8C-905BA93A4CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairsManager.Dal", "RepairsManager.Dal\RepairsManager.Dal.csproj", "{4144163A-386B-4ED4-AE8C-905BA93A4CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairsManager.Bll", "RepairsManager.Bll\RepairsManager.Bll.csproj", "{E8946539-C72D-441E-BF6C-3EB7A11FBC5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairsManager.Bll", "RepairsManager.Bll\RepairsManager.Bll.csproj", "{E8946539-C72D-441E-BF6C-3EB7A11FBC5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Write-off", "Write-off", "{0B5AE763-DEAA-4D36-87FB-9C5AB3C6C4E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairsManager.WriteOffModule", "RepairsManager.WriteOffModule\RepairsManager.WriteOffModule.csproj", "{45C3F13E-1996-4566-A22F-13F81BC35031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM.TestConsole", "RM.TestConsole\RM.TestConsole.csproj", "{EB244776-30CA-4B66-9C5A-19DC5A1172E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,20 @@ Global
 		{E8946539-C72D-441E-BF6C-3EB7A11FBC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8946539-C72D-441E-BF6C-3EB7A11FBC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8946539-C72D-441E-BF6C-3EB7A11FBC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C3F13E-1996-4566-A22F-13F81BC35031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C3F13E-1996-4566-A22F-13F81BC35031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C3F13E-1996-4566-A22F-13F81BC35031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C3F13E-1996-4566-A22F-13F81BC35031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB244776-30CA-4B66-9C5A-19DC5A1172E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB244776-30CA-4B66-9C5A-19DC5A1172E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB244776-30CA-4B66-9C5A-19DC5A1172E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB244776-30CA-4B66-9C5A-19DC5A1172E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45C3F13E-1996-4566-A22F-13F81BC35031} = {0B5AE763-DEAA-4D36-87FB-9C5AB3C6C4E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {724E4314-5FA9-40BA-A756-88663F5ABED3}

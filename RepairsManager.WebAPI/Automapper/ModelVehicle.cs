@@ -10,7 +10,7 @@ namespace RepairsManager.WebAPI.Automapper
         {
             CreateMap<VehicleModel, ModelVehicleEndpoint>()
                 .ForMember(dest => dest.Id, m => m.MapFrom(srv => srv.Id))
-                .ForMember(dest => dest.VehicleMarkId, m => m.MapFrom(srv => srv.VehicleMarkId))
+                .ForMember(dest => dest.VehicleMarkId, m => m.MapFrom(srv => srv.MarkId))
                 .ForMember(dest => dest.Name, m => m.MapFrom(srv => srv.Name))
                 .ForAllOtherMembers(m => m.Ignore());
         }

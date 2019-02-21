@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RepairsManager.Dal.Context;
+using RepairsManager.Dal.Models;
 using RepairsManager.WebAPI.Models;
 
 namespace RepairsManager.WebAPI.Controllers
@@ -23,6 +23,7 @@ namespace RepairsManager.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<MarkEndpointModel> Get()
         {
+            //return null;
             return mapper.Map<IEnumerable<MarkEndpointModel>>(context.VehicleMark);
         }
 

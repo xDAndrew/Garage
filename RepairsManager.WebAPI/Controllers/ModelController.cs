@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RepairsManager.Dal.Context;
+using RepairsManager.Dal.Models;
 using RepairsManager.WebAPI.Models;
 
 namespace RepairsManager.WebAPI.Controllers
@@ -21,6 +17,7 @@ namespace RepairsManager.WebAPI.Controllers
             this.context = context;
             this.mapper = mapper;
         }
+
         // GET: api/Model
         [HttpGet]
         public IEnumerable<ModelVehicleEndpoint> Get()

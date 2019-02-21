@@ -12,7 +12,8 @@ namespace RepairsManager.Dal.Models
 
         public int Id { get; set; }
         public string Number { get; set; }
-        public DateTime? Receipt { get; set; }
+        public DateTime Receipt { get; set; }
+        public decimal Price { get; set; }
 
         public virtual ICollection<Material> Material { get; set; }
     }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RepairsManager.Dal.Context;
+using RepairsManager.Dal.Models;
 using RepairsManager.WebAPI.Automapper;
 
 namespace RepairsManager.WebAPI

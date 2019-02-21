@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RepairsManager.Dal.Models
 {
@@ -10,10 +11,10 @@ namespace RepairsManager.Dal.Models
         }
 
         public int Id { get; set; }
-        public int VehicleModelId { get; set; }
+        public int ModelId { get; set; }
         public string RegNumber { get; set; }
 
-        public virtual VehicleModel VehicleModel { get; set; }
+        public virtual VehicleModel Model { get; set; }
         public virtual ICollection<Repair> Repair { get; set; }
     }
 }

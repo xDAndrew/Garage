@@ -10,15 +10,15 @@ namespace RepairsManager.WebAPI.Automapper
         {
             CreateMap<Vehicle, VehicleEndpointModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dist => dist.MarkName, opt => opt.MapFrom(src => src.VehicleModel.VehicleMark.Name))
-                .ForMember(dist => dist.ModelName, opt => opt.MapFrom(src => src.VehicleModel.Name))
+                .ForMember(dist => dist.MarkName, opt => opt.MapFrom(src => src.Model.Mark.Name))
+                .ForMember(dist => dist.ModelName, opt => opt.MapFrom(src => src.Model.Name))
                 .ForMember(dist => dist.RegNumber, opt => opt.MapFrom(src => src.RegNumber))
                 .ForAllOtherMembers(opt => opt.Ignore());
-            
+
             CreateMap<VehicleEndpointModel, Vehicle>()
                 .ForMember(dist => dist.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dist => dist.RegNumber, opt => opt.MapFrom(src => src.RegNumber))
-                .ForMember(dist => dist.VehicleModelId, opt => opt.MapFrom(src => src.ModelId))
+                .ForMember(dist => dist.ModelId, opt => opt.MapFrom(src => src.ModelId))
                 .ForAllOtherMembers(opt => opt.Ignore());
         }
     }

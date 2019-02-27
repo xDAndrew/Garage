@@ -14,7 +14,7 @@ export class AppComponent {
       item = x;
       item.director = 'A.Д.Иванов';
       api.putWriteOffState(item).subscribe(() => { 
-        api.getDocument();
+        api.getDocument(new Date());
       });
     });
   }

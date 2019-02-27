@@ -40,6 +40,8 @@ namespace RepairsManager.WebAPI
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<WorkOffRepairMapper>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

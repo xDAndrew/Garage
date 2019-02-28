@@ -17,8 +17,8 @@ namespace RepairsManager.WebAPI.Automapper
 
             CreateMap<VehicleEndpointModel, Vehicle>()
                 .ForMember(dist => dist.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dist => dist.RegNumber, opt => opt.MapFrom(src => src.RegNumber))
                 .ForMember(dist => dist.ModelId, opt => opt.MapFrom(src => src.ModelId))
+                .ForMember(dist => dist.RegNumber, opt => opt.MapFrom(src => src.RegNumber))
                 .ForAllOtherMembers(opt => opt.Ignore());
         }
     }

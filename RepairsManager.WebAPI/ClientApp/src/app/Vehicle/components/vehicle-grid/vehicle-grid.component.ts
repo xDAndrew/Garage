@@ -6,7 +6,8 @@ import { VehicleService } from '../../services/vehicle.service';
 @Component({
   selector: 'app-vehicle-grid',
   templateUrl: './vehicle-grid.component.html',
-  styleUrls: ['./vehicle-grid.component.scss']
+  styleUrls: ['./vehicle-grid.component.scss'],
+  providers: [ VehicleService ]
 })
 export class VehicleGridComponent implements OnInit {
 

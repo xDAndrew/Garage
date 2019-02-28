@@ -4,7 +4,6 @@ import { VehicleGridComponent } from './components/vehicle-grid/vehicle-grid.com
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { VehicleApiService } from './services/api/vehicle-api.service';
-import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +15,7 @@ import { MarkApiService } from './services/api/mark-api.service';
 import { ModelApiService } from './services/api/model-api.service';
 import { ModelService } from './services/model.service';
 import { Routes, RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   { path: '', component: VehicleGridComponent },
@@ -34,10 +34,11 @@ const routes: Routes = [
     FormsModule,
     InputTextModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    NgSelectModule
   ],
   exports: [],
-  providers: [VehicleApiService, VehicleService, MarkService, MarkApiService, ModelApiService, ModelService]
+  providers: [VehicleApiService, MarkService, MarkApiService, ModelApiService, ModelService]
 })
 export class VehicleModule { }
 

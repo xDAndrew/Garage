@@ -21,8 +21,10 @@ export class VehicleService {
     }
 
     public SetVehicle(model: vehicleModel) {
-        this.data.push(model);
-        this.instance$.next(this.data);
+        this.vehicleApi.postVehicle(model).subscribe(() => {
+            this.data.push(model);
+            this.instance$.next(this.data);
+        });
     }
 
     public Update(model: vehicleModel) {
@@ -36,6 +38,7 @@ export class VehicleService {
     public RemoveVehicle(id: number) {
         let index = this.data.findIndex(x => x.id == id);
         if (index > -1) {
+            this.vehicleApi.deleteVehicle(this.data[index].id).subscribe();
             this.data.splice(index, 1);
             this.instance$.next(this.data);
         }

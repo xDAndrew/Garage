@@ -1,17 +1,17 @@
-<div class="ui-g d-flex justify-content-center ">
+<div class="ui-g d-flex justify-content-center mt-5">
   <div class="card shadow">
     <div class="card-header">Добавить автотранспорт</div>
     <div class="p-2 ui-fluid">
       <label class="ui-g-12 p-0">Марка</label>
-      <p-dropdown [options]="marks | async" [(ngModel)]="selectedMark" optionLabel="name" (onChange)="setModels()" required></p-dropdown>
+      <ng-select [items]="marks | async" [(ngModel)]="selectedMark" bindLabel="name" (change)="setModels()"></ng-select>
       <label class="ui-g-12  p-0">Модель</label>
-      <p-dropdown [options]="models" class="ui-g-12  p-0" optionLabel="name" required></p-dropdown>
+      <ng-select [items]="models" [(ngModel)]="selectedModel" bindLabel="name" (change)="setModels()"></ng-select>
       <label class="ui-g-12 p-0">Гос. №</label>
       <input pInputText class="mb-2" type="text" [(ngModel)]="text" required />
 
       <div class="d-flex justify-content-end align-items-center">
-        <button pButton type="button" label="Добавить" class="ui-button-success mr-1"></button>
-        <button pButton type="button" label="Назад" class="ui-button-danger ml-1"></button>
+        <button pButton type="button" label="Добавить" class="ui-button-success mr-1" [disabled]="!validModel" (click)="addVehicle()"></button>
+        <button pButton type="button" label="Назад" class="ui-button-danger ml-1" [routerLink]="'/Auto'"></button>
       </div>
     </div>
   </div>

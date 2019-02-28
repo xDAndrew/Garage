@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,8 +42,12 @@ namespace RepairsManager.WebAPI.Controllers
 
         // POST: api/Vehicle
         [HttpPost]
-        public void Post([FromBody] string value)
+        public int Post([FromBody] VehicleEndpointModel value)
         {
+            var entity = mapper.Map<Vehicle>(value);
+            context.Vehicle.Add(entity);
+            context.SaveChanges();
+            return entity.Id;
         }
 
         // PUT: api/Vehicle/5
@@ -55,6 +60,12 @@ namespace RepairsManager.WebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var entity = context.Vehicle.FirstOrDefault(x => x.Id == id);
+            if (entity != null)
+            {
+                context.Remove(entity);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WoEditFormComponent } from './components/wo-edit-form/wo-edit-form.component';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [WoEditFormComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CalendarModule,
+    FormsModule
+  ],
+  exports: [
+    WoEditFormComponent
   ]
 })
 export class WriteoffModule { }

@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
-import { VehicleModule } from './Vehicle/vehicle.module';
-import { WriteoffModule } from './WriteOff/writeoff.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +18,6 @@ import { WriteoffModule } from './WriteOff/writeoff.module';
     AppRoutingModule,
     ToolbarModule,
     ButtonModule,
-    VehicleModule,
-    WriteoffModule
   ],
   providers: [],
   bootstrap: [AppComponent]

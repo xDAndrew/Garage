@@ -71,7 +71,7 @@ namespace RepairsManager.WriteOffModule.Services
                 foreach (var itemRepair in repairs)
                 {
                     sheet.Row(materialsStartRow).Style.Font.SetFromFont(new Font("Times New Roman", 12));
-                    sheet.Row(materialsStartRow).Height = 40;
+                    sheet.Row(materialsStartRow).Height = 45;
 
                     var cells = new List<ExcelRange>
                     {
@@ -84,6 +84,9 @@ namespace RepairsManager.WriteOffModule.Services
                         sheet.Cells[materialsStartRow, 15, materialsStartRow, 18],
                         sheet.Cells[materialsStartRow, 19, materialsStartRow, 20]
                     };
+
+                    cells[3].Style.Font.SetFromFont(new Font("Arial", 8));
+                    cells[7].Style.Font.SetFromFont(new Font("Arial", 10));
 
                     foreach (var itemCell in cells)
                     {
@@ -101,9 +104,9 @@ namespace RepairsManager.WriteOffModule.Services
                     cells[1].Value = itemRepair.Detail;
                     cells[2].Value = itemRepair.Unit;
                     cells[3].Value = itemRepair.Party;
-                    cells[4].Value = 1.00m;
+                    cells[4].Value = itemRepair.Amount;
                     cells[5].Value = itemRepair.Price;
-                    cells[6].Value = itemRepair.Price;
+                    cells[6].Value = itemRepair.Price * itemRepair.Amount;
                     cells[7].Value = itemRepair.Reason;
 
                     cells[4].Style.Numberformat.Format = "0.00";

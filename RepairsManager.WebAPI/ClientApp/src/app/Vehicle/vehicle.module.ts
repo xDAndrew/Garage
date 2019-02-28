@@ -15,10 +15,18 @@ import { MarkService } from './services/mark.service';
 import { MarkApiService } from './services/api/mark-api.service';
 import { ModelApiService } from './services/api/model-api.service';
 import { ModelService } from './services/model.service';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: VehicleGridComponent },
+  { path: 'form', component: VehicleFormComponent },
+  { path: 'form/:id', component: VehicleFormComponent },
+];
 
 @NgModule({
   declarations: [VehicleGridComponent, VehicleFormComponent, VehicleFormComponent],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     TableModule,
     HttpClientModule,
@@ -28,7 +36,7 @@ import { ModelService } from './services/model.service';
     ButtonModule,
     CardModule
   ],
-  exports: [VehicleGridComponent, VehicleFormComponent],
+  exports: [],
   providers: [VehicleApiService, VehicleService, MarkService, MarkApiService, ModelApiService, ModelService]
 })
 export class VehicleModule { }

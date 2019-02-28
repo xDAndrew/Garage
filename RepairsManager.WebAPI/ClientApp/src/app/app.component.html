@@ -1,11 +1,9 @@
 <p-toolbar>
   <div class="ui-toolbar-group-left">
     <a>Документы</a>
-    <a class="m-2">Отчеты</a>
-    <a>Справочник</a>
+    <a [routerLink]="'/Auto'" class="m-2">Автопарк</a>
+    <a [routerLink]="'/WorkOffForm'">Акт списания</a>
   </div>
 </p-toolbar>
-
-<app-wo-edit-form></app-wo-edit-form>
 
 <router-outlet></router-outlet>

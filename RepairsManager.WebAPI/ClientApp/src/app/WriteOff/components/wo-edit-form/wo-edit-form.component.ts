@@ -5,7 +5,8 @@ import { State, Member } from '../../models/state';
 @Component({
   selector: 'app-wo-edit-form',
   templateUrl: './wo-edit-form.component.html',
-  styleUrls: ['./wo-edit-form.component.scss']
+  styleUrls: ['./wo-edit-form.component.scss'],
+  providers: [ WriteOffApiService ]
 })
 export class WoEditFormComponent implements OnInit {
 

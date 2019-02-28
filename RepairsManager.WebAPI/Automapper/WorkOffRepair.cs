@@ -40,7 +40,8 @@ namespace RepairsManager.WebAPI.Automapper
                         Party = $"партия {detail.Material.Party.Number} от {detail.Material.Party.Receipt.ToString("dd.MM.yyyy hh:mm:ss")}",
                         Price = detail.Material.Party.Price,
                         Reason = $"Использована для ремонта автомобиля {item.Vehicle.Model.Mark.Name} № {item.Vehicle.RegNumber}",
-                        Unit = detail.Material.Unit.Name
+                        Unit = detail.Material.Unit.Name,
+                        Amount = detail.Amount
                     };
                     result.Add(row);
                 }

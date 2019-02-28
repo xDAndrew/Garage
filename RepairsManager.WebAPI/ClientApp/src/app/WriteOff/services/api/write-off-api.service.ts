@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { State } from '../../models/state';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WriteOffApiService {
 
   constructor(private http: HttpClient) { }

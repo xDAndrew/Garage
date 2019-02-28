@@ -1,3 +1,75 @@
-<p-calendar [(ngModel)]="period" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-<br />
-<button class="btn btn-success" (click)="getDocument()">Сформировать</button>
+<h1 class="text-center pt-5">Акт списания</h1>
+<div *ngIf="loaded" class="ui-g ui-fluid">
+    <div class="ui-g ui-g-8 ui-g-offset-2 card">
+        <div class="d-flex justify-content-center align-items-center">
+            <span class="mr-2">Отчетный период:</span>
+            <p-calendar
+                [inputId]="'calendar'"
+                [(ngModel)]="period"
+                view="month"
+                dateFormat="mm/yy"
+                [yearNavigator]="true"
+                [required]="'true'"
+                yearRange="2000:2030">
+            </p-calendar>
+        </div>
+        <hr />
+        <div class="ui-g ui-fluid">
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-4">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.organization" required pInputText> 
+                <label for="float-input">Название организации</label>
+            </span>
+            <span class="ui-float-label mt-1 p-0 ui-g-4">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.director" required pInputText> 
+                <label for="float-input">Директор</label>
+            </span>
+            <span class="ui-float-label mt-1 p-0 pl-1 ui-g-4">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.department" required pInputText> 
+                <label for="float-input">Служба</label>
+            </span>
+        </div>
+        <hr />
+        <div class="ui-g ui-fluid">
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-6">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.commission.number" required pInputText>
+                <label for="float-input">Номер приказа и дата создания комиссии</label>
+            </span>
+            <span class="ui-float-label mt-1 p-0 px-1 ui-g-6">
+                <p-calendar [(ngModel)]="model.commission.createDate" dateFormat="dd.mm.yy" [showIcon]="true" [required]="'true'"></p-calendar>
+            </span>
+        </div>
+        <div class="ui-g ui-fluid mt-4">
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-6">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.commission.chairman.name" required pInputText>
+                <label for="float-input">Председатель комиссии</label>
+            </span>
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-6">
+                <input id="float-input" type="text" size="30" [(ngModel)]="model.commission.chairman.place" required pInputText>
+                <label for="float-input">Должность</label>
+            </span>
+        </div>
+        <div *ngFor="let employee of model.commission.members; let i = index" class="ui-g ui-fluid mt-4">
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-6">
+                <input id="float-input" type="text" size="30" [(ngModel)]="employee.name" required pInputText>
+                <label for="float-input">Сотрудник</label>
+            </span>
+            <span class="ui-float-label mt-1 p-0 pr-1 ui-g-6">
+                <div class="d-flex justify-content-end position-absolute">
+                    <button class="btn btn-danger position-absolute" (click)="removeEmployee(i)" style="height: 34px; left: -37px">x</button>
+                </div>
+                <input id="float-input" type="text" size="30" [(ngModel)]="employee.place" required pInputText>
+                <label for="float-input">Должность</label>
+            </span>
+        </div>
+        <div class="d-flex justify-content-end pt-3">
+            <button class="btn btn-success" (click)="addNewEmployee()">Добавить</button>
+        </div>
+        <hr />
+        <div *ngIf="getSaveValidation()" class="text-danger">Заполните все поля</div>
+        <div *ngIf="getValidation()" class="text-danger">Выбирите отчетный период</div>
+        <div class="d-flex">
+            <button class="btn btn-success mr-auto" (click)="saveModel()" [disabled]="getSaveValidation()">Сохранить</button>
+            <button class="btn btn-success" (click)="getDocument()" [disabled]="getValidation()">Сформировать</button>
+        </div>
+    </div>
+</div>

@@ -30,6 +30,7 @@ namespace RepairsManager.WebAPI
             {
                 mc.AddProfile(new VehicleProfile());
                 mc.AddProfile(new ModelVehicle());
+                mc.AddProfile(new RepairProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();

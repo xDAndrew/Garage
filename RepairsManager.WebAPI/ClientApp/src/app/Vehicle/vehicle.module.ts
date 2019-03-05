@@ -16,15 +16,17 @@ import { ModelApiService } from './services/api/model-api.service';
 import { ModelService } from './services/model.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { VehicleMarkEditComponent } from './components/vehicle-mark-edit/vehicle-mark-edit.component';
 
 const routes: Routes = [
   { path: '', component: VehicleGridComponent },
   { path: 'form', component: VehicleFormComponent },
   { path: 'form/:id', component: VehicleFormComponent },
+  { path: 'from_Edit', component: VehicleMarkEditComponent },
 ];
 
 @NgModule({
-  declarations: [VehicleGridComponent, VehicleFormComponent, VehicleFormComponent],
+  declarations: [VehicleGridComponent, VehicleFormComponent, VehicleFormComponent, VehicleMarkEditComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,

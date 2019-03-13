@@ -1,0 +1,30 @@
+<div class="ui-g d-flex justify-content-center mt-5">
+  <div class="card shadow">
+    <div class="card-header">Дефектная ведомость</div>
+    <div class="p-2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+              <label class="m-0">Марка</label>
+              <ng-select [items]="marks | async" [(ngModel)]="selectedMark" bindLabel="name" (change)="onChangeMark()"></ng-select>
+          </div>
+          <div class="col-4">
+              <label class="m-0">Модель</label>
+              <ng-select [items]="models | async" [(ngModel)]="selectedModel" bindLabel="name" (change)="onChangeModel()"></ng-select>
+          </div>
+          <div class="col-4">
+              <label class="m-0">Гос. №</label>
+              <ng-select [items]="numbers | async" [(ngModel)]="selectedNumber" bindLabel="regNumber"></ng-select>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="d-flex align-items-center mt-2">
+        <p-calendar class="pl-3 mr-auto" [(ngModel)]="selectedDate" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+        <button pButton type="button" label="Сохранить" class="ui-button-success mr-1"></button>
+        <button pButton type="button" label="Назад" class="ui-button-danger ml-1"></button>
+      </div>
+    </div>
+  </div>
+</div>

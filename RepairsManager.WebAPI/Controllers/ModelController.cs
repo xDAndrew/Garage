@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RepairsManager.Dal.Models;
@@ -27,9 +28,10 @@ namespace RepairsManager.WebAPI.Controllers
 
         // GET: api/Model/5
         [HttpGet("{id}", Name = "GetModel")]
-        public string Get(int id)
+        public IEnumerable<ModelVehicleEndpoint> Get(int id)
         {
-            return "value";
+            var items = context.VehicleModel.Where(x => x.MarkId == id).ToList();
+            return mapper.Map<IEnumerable<ModelVehicleEndpoint>>(items);
         }
 
         // POST: api/Model

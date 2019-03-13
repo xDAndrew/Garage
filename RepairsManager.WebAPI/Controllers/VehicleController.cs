@@ -35,9 +35,10 @@ namespace RepairsManager.WebAPI.Controllers
 
         // GET: api/Vehicle/5
         [HttpGet("{id}", Name = "GetVehicle")]
-        public void Get(int id)
+        public IEnumerable<VehicleEndpointModel> Get(int id)
         {
-            
+            var items = context.Vehicle.Where(x => x.ModelId == id).ToArray();
+            return mapper.Map<IEnumerable<VehicleEndpointModel>>(items);
         }
 
         // POST: api/Vehicle

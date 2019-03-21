@@ -8,7 +8,6 @@
       <ng-select [items]="models" [(ngModel)]="selectedModel" bindLabel="name" (change)="setModels()"></ng-select>
       <label class="ui-g-12 p-0">Гос. №</label>
       <input pInputText class="mb-2" type="text" [(ngModel)]="text" required />
-
       <div class="d-flex justify-content-end align-items-center">
         <button pButton type="button" label="Добавить" class="ui-button-success mr-1" [disabled]="!validModel" (click)="addVehicle()"></button>
         <button pButton type="button" label="Назад" class="ui-button-danger ml-1" [routerLink]="'/Auto'"></button>
@@ -16,3 +15,4 @@
     </div>
   </div>
 </div>
+

@@ -7,13 +7,13 @@ import { VehicleService } from '../../services/vehicle.service';
   selector: 'app-vehicle-grid',
   templateUrl: './vehicle-grid.component.html',
   styleUrls: ['./vehicle-grid.component.scss'],
-  providers: [ VehicleService ]
+  providers: [VehicleService]
 })
 export class VehicleGridComponent implements OnInit {
 
   private vehilces: Observable<Array<vehicleModel>>;
   private selectedVehicle: vehicleModel;
-
+  private idd: number;
   cols: any[] = [
     { field: 'id', header: '#' },
     { field: 'markName', header: 'Марка' },

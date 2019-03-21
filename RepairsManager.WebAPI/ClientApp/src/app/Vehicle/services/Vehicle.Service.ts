@@ -43,4 +43,8 @@ export class VehicleService {
             this.instance$.next(this.data);
         }
     }
+    public GetVehicleId(id: number): vehicleModel {
+        let index = this.data.findIndex(x => x.id == id);
+        return this.data[index];
+    }
 }

@@ -40,4 +40,9 @@ export class MarkService {
       this.instance$.next(this.data);
     }
   }
+  public GetVehicleMarkModel(id: number) {
+    let index = this.data.findIndex(x => x.id == id);
+        return this.data[index];
+
+  }
 }

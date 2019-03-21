@@ -6,6 +6,7 @@ import { ModelService } from '../../services/model.service';
 import { ModelVehicle } from '../../models/modelVehicle';
 import { VehicleService } from '../../services/vehicle.service';
 import { vehicleModel } from '../../models/VehicleModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -21,7 +22,10 @@ export class VehicleFormComponent implements OnInit {
 
   text: string;
 
-  constructor(private vehicleService: VehicleService, private markService: MarkService, private modelService: ModelService) { }
+  constructor(private vehicleService: VehicleService,
+    private markService: MarkService,
+    private modelService: ModelService,
+    private router: Router) { }
 
   ngOnInit() {
     this.marks = this.markService.collection;
@@ -44,6 +48,9 @@ export class VehicleFormComponent implements OnInit {
     item.modelName = this.selectedModel.name;
     item.markName = this.selectedMark.name;
     item.modelId = this.selectedModel.id;
+    this.vehicleService.collection.subscribe(() => {
+      this.router.navigate(['/']);
+    });
     this.vehicleService.SetVehicle(item);
   }
 }

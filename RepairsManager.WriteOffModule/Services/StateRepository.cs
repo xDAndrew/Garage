@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using RepairsManager.WriteOffModule.Models;
+using RepairsManager.WriteOffModule.Models.Materials;
 
 namespace RepairsManager.WriteOffModule.Services
 {
@@ -209,6 +209,95 @@ namespace RepairsManager.WriteOffModule.Services
 
                 return eP.GetAsByteArray();
             }
+        }
+
+        public static List<Material> SetMaterials(byte[] data)
+        {
+            var result = new List<Material>();
+            using (var eP = new ExcelPackage(new MemoryStream(data)))
+            {
+                var sheet = eP.Workbook.Worksheets.First();
+                var startRow = 0;
+                var endRow = 0;
+
+                var iterator = 1;
+                var startPositionInit = false;
+                while (!((sheet.Cells[iterator, 1].Value as string) ?? "").Contains("ИТОГО:"))
+                {
+                    // Определяем стартовую позицию
+                    if ((sheet.Cells[iterator, 1].Value as string ?? "") == "По счету 10.5")
+                    {
+                        startRow = iterator;
+                        startPositionInit = true;
+                    }
+
+                    // Определяем конечную страницу
+                    if (startPositionInit && ((sheet.Cells[iterator, 1].Value as string) ?? "") == "По счету 10.6")
+                    {
+                        endRow = iterator;
+                    }
+
+                    // Идем на след строку
+                    iterator++;
+                }
+
+                for (int i = startRow + 1; i < endRow; i++)
+                {
+                    if (!Convert.ToString(sheet.Cells[i, 2].Value as string ?? "").Equals(""))
+                    {
+                        var item = new Material();
+                        item.Name = Convert.ToString(sheet.Cells[i, 2].Value);
+                        item.Unit = Convert.ToString(sheet.Cells[i, 7].Value);
+
+                        var count = Convert.ToDouble(sheet.Cells[i, 14].Value);
+                        var partyRow = i + 1;
+                        while (count > 0)
+                        {
+                            var price = Convert.ToString(sheet.Cells[partyRow, 6].Value).Replace(',', '.').Replace(" ", string.Empty);
+
+                            var party = new Party
+                            {
+                                Number = GetNumber(Convert.ToString(sheet.Cells[partyRow, 3].Value)),
+                                Date = GetDate(Convert.ToString(sheet.Cells[partyRow, 3].Value)),
+                                Price = Convert.ToDecimal(price),
+                                Count = Convert.ToDouble(sheet.Cells[partyRow, 14].Value),
+                            };
+                            count -= party.Count;
+                            item.Parties.Add(party);
+                            partyRow++;
+                        }
+                        result.Add(item);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static string GetNumber(string data)
+        {
+            var separator = data.Split(' ');
+            if (separator.Length == 5)
+            {
+                return separator[1];
+            }
+            else
+            {
+                if (separator.Length == 6)
+                {
+                    return $"{separator[1]} {separator[2]}";
+                }
+            }
+            return null;
+        }
+
+        public static DateTime GetDate(string data)
+        {
+            var separator = data.Split(' ');
+            var date = separator[separator.Length - 2].Split('.');
+            var time = separator[separator.Length - 1].Split(':');
+            var result = DateTime.Parse($"{date[0]}/{date[1]}/{date[2]} {time[0]}:{time[1]}:{time[2]}");
+            return result;
         }
 
         public static State State

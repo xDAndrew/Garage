@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using RepairsManager.WebAPI.Automapper;
@@ -41,6 +40,14 @@ namespace RepairsManager.WebAPI.Controllers
                 FileDownloadName = $"{date.Month}/{date.Year}.xlsx"
             };
             return result;
+        }
+
+        [HttpGet]
+        [Route("SetMaterials")]
+        public void SetMaterials()
+        {
+            var file = System.IO.File.ReadAllBytes(@"11.18.xlsx");
+            var items = StateRepository.SetMaterials(file);
         }
 
         // PUT: api/WorkOff
